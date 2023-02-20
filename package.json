@@ -15,10 +15,10 @@
     "@mui/material": "^5.11.8",
     "@next/font": "13.1.6",
     "next": "13.1.6",
-    "react": "18.2.0",
+    "react": "^18.2.0",
     "react-dom": "18.2.0",
     "react-image-gallery": "^1.2.11",
-    "react-images": "^1.1.7",
+    "react-images": "^1.2.0-beta.7",
     "react-photo-gallery-next": "^8.0.1"
   }
 }
