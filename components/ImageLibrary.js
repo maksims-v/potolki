@@ -2,7 +2,6 @@ import React, { useState, useCallback } from 'react';
 import Carousel, { Modal, ModalGateway } from 'react-images';
 import { Typography, Box, useMediaQuery, Chip, Stack } from '@mui/material';
 import Gallery from 'react-photo-gallery-next';
-import Image from 'next/image';
 
 import fotopechat1 from '../src/image/fotopechat/1.jpg';
 import fotopechat2 from '../src/image/fotopechat/2.jpg';
