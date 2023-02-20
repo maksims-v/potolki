@@ -22,7 +22,7 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
-          content="Новая Toyota C-HR 2020 в продаже у официального дилера Toyota в Уфе. ✅Автомобили в наличии с ПТС. ✅Гарантия производителя. ✅Выгодный кредит и Trade-in. ⚡Получите специальное предложение на сайте!"
+          content="Piekaramie Griesti | Iestieptie, nostiepjamie griesti Rīgā un Latvijā"
         />
       </Head>
       <ThemeProvider theme={theme}>
@@ -32,8 +32,8 @@ const Home = () => {
             backgroundColor: '#f2f2f2',
             width: isNonMediumScreens ? '55%' : '100%',
           }}>
-          <Calculator />
-          <About />
+          <Calculator language={language} />
+          <About language={language} />
         </Container>
 
         <Footer />

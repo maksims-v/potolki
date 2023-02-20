@@ -3,7 +3,7 @@ import { Typography, Box, List, ListItem, useMediaQuery } from '@mui/material';
 import CheckCircleOutlineTwoToneIcon from '@mui/icons-material/CheckCircleOutlineTwoTone';
 import ImageLibrary from './ImageLibrary';
 
-const whyArr = [
+const whyArrRus = [
   'Монтажные работы в сжатые сроки. Установка потолка в течении 1-го дня.',
   'Нет необходимости в освобождении комнаты, нужен лишь доступ к рабочему пространству.',
   'Минимальное пространство между основным и натяжным потолком составляет лишь 2.5 см.',
@@ -23,8 +23,27 @@ const whyArr = [
   'О прочности материала говорит тот факт, что полотно выдерживает удар пробки от бутылки шампанского.',
 ];
 
-const About = () => {
-  const isNonSmallScreens = useMediaQuery('(min-width: 600px)');
+const whyArrLat = [
+  'Instalācijas darbi īsā laikā. Griestu uzstādīšana 1 dienas laikā.',
+  'Nav jāatbrīvo telpa, ir tikai piekļuve darba vietai.',
+  'Minimālā atstarpe starp galvenajiem un stieptajiem griestiem ir tikai 2,5 cm.',
+  'Piekaramajos griestos var uzstādīt jebkura veida apgaismojumu, ventilāciju, aizkarus, signalizācijas sensorus...',
+  'Stieptie griesti pasargās ne tikai no drūpošā apmetuma, bet arī noplūdes gadījumā no augšas pasargās dārgu interjeru, uzņemot visu ūdens masu (un tas ir aptuveni 100 litri uz kvadrātmetru).',
+  'Ventilācijas, signalizācijas un ugunsdrošības sistēmas var paslēpt stieptajos griestos. Ja nepieciešams, iespējams izmantot papildus siltumizolācijas materiālus.',
+  'Stieptajiem griestiem nav nepieciešama papildu apkope un periodisks remonts, kas ietaupīs pūles un naudu.',
+  'Stieptie griesti neuzkrāj statisko elektrību un neveidojas kondensāts, kas ir ļoti svarīgi peldbaseiniem un vannas istabām.',
+  'Stieptie griesti ir viegli demontējami, pēc atkārtotas uzstādīšanas audekls atgriežas sākotnējā formā, un kvalitātes raksturlielumi nemainās.',
+  'Ideāli piemērots guļbaļķu mājām un jaunām ēkām. Jo, kad māja sarūk, griesti nekādā veidā necietīs.',
+  'Izdevīgā atšķirība starp stieptajiem griestiem un tradicionālajām apdares metodēm slēpjas milzīgajā materiālu krāsu un faktūru izvēlē.',
+  'Stiepto griestu audums ir tik elastīgs, ka tam var būt pilnīgi jebkura forma: izliekta, stūraina, daudzšķautņaina, daudzlīmeņu, futūristiska trīsdimensiju virsma utt.',
+  'Turklāt paši stieptie griesti ir absolūti ekoloģiski un ugunsdroši, tie neuzsūc smakas un nelaiž iekšā skaņas.',
+  'Stiepto griestu uzstādīšana visos posmos novērš būvgružus un netīrumus, kā arī dažas papildu neērtības.',
+  ' Stiepjamajiem griestiem nepieciešama visvienkāršākā kopšana, pēc dažiem gadiem, kad griesti pārstās spīdēt kā pirmajā dienā, tie būs jānoslauka ar sausu drānu.',
+  'Un tomēr stieptie griesti kalpo ilgu laiku. Tikai garantijas laiks ir 10 gadi, un šajā laikā audekls nemainīs savu krāsu, neizdegs, nezaudēs sākotnējās tehniskās īpašības.',
+  'Par materiāla izturību liecina fakts, ka audekls iztur korķa triecienu no šampanieša pudeles.',
+];
+
+const About = ({ language }) => {
   const isNonMediumScreens = useMediaQuery('(min-width: 900px)');
 
   return (
@@ -32,10 +51,10 @@ const About = () => {
       <Typography
         variant="h3"
         sx={{ borderBottom: 2, borderColor: '#ffd166', mb: '10px', pb: '5px', fontWeight: 'bold' }}>
-        Преимущества натяжных потолков:
+        {language ? 'Преимущества натяжных потолков:' : 'Stiepto griestu priekšrocības:'}
       </Typography>
       <List sx={{ display: 'flex', flexDirection: 'column' }}>
-        {whyArr.map((item) => (
+        {(language ? whyArrRus : whyArrLat).map((item) => (
           <ListItem
             key={item}
             sx={{
@@ -51,7 +70,7 @@ const About = () => {
           </ListItem>
         ))}
       </List>
-      <ImageLibrary />
+      <ImageLibrary language={language} />
       <Typography
         variant="h3"
         sx={{
@@ -62,29 +81,57 @@ const About = () => {
           pt: 5,
           fontWeight: 'bold',
         }}>
-        Общая информация о натяжных потолках
+        {language
+          ? 'Общая информация о натяжных потолках'
+          : 'Vispārīga informācija par stieptajiem griestiem'}
       </Typography>
-      <Typography variant="h6" sx={{ fontSize: '16px', pb: 5 }}>
-        Натяжной потолок представляет собой полотнище, которое натягивается на специально
-        сконструированный профиль – багет под основным потолком. Использование качественного
-        натяжного полотна позволяет скрыть любые дефекты и сформировать идеально ровную потолочную
-        поверхность, что необходимо для создания максимального уюта в любом помещении. <br /> <br />{' '}
-        В соответствии с технологией монтажа и вида натяжного потолка уменьшение уровня потолка
-        составит 3-5 см, а если использовать глянцевые полотна, то визуально Ваш потолок станет еще
-        выше. Стоит заметить, что время установки одного потолка средней сложности составляет всего
-        несколько часов, при этом процесс монтажа не оставляет грязи и строительного мусора. <br />{' '}
-        Для монтажа натяжных потолков не имеет существенного значения ни планировка, ни площадь
-        обустраиваемого помещения. Натяжные потолки, изготовленные на заказ, вписываются в
-        совершенно любое пространство, позволяя воплотить в жизнь самые смелые дизайнерские идеи.
-        Кроме того, не требуется соблюдение каких-либо особых условий для эксплуатации натяжного
-        потолка. Для натяжного полотна оптимальная температура воздуха составляет от +0ºС до +60ºС,
-        а этого диапазона достаточно даже для самых экстремальных ситуаций с погодой и отоплением
-        жилых помещений. Нет ограничений для натяжного потолка и по уровню влажности в помещении,
-        так как материал, из которого состоит полотно, совершенно не впитывает влагу и не
-        конденсирует испарения. <br /> Натяжной потолок практически не требует ухода. Если вдруг
-        появились загрязнения, то их можно смыть мягкой тканью, смоченной в теплом мыльном растворе.
-        В свою очередь, для восстановлен{' '}
-      </Typography>
+      {language ? (
+        <Typography variant="h6" sx={{ fontSize: '16px', pb: 5 }}>
+          Натяжной потолок представляет собой полотнище, которое натягивается на специально
+          сконструированный профиль – багет под основным потолком. Использование качественного
+          натяжного полотна позволяет скрыть любые дефекты и сформировать идеально ровную потолочную
+          поверхность, что необходимо для создания максимального уюта в любом помещении. <br />{' '}
+          <br /> В соответствии с технологией монтажа и вида натяжного потолка уменьшение уровня
+          потолка составит 3-5 см, а если использовать глянцевые полотна, то визуально Ваш потолок
+          станет еще выше. Стоит заметить, что время установки одного потолка средней сложности
+          составляет всего несколько часов, при этом процесс монтажа не оставляет грязи и
+          строительного мусора. <br /> Для монтажа натяжных потолков не имеет существенного значения
+          ни планировка, ни площадь обустраиваемого помещения. Натяжные потолки, изготовленные на
+          заказ, вписываются в совершенно любое пространство, позволяя воплотить в жизнь самые
+          смелые дизайнерские идеи. Кроме того, не требуется соблюдение каких-либо особых условий
+          для эксплуатации натяжного потолка. Для натяжного полотна оптимальная температура воздуха
+          составляет от +0ºС до +60ºС, а этого диапазона достаточно даже для самых экстремальных
+          ситуаций с погодой и отоплением жилых помещений. Нет ограничений для натяжного потолка и
+          по уровню влажности в помещении, так как материал, из которого состоит полотно, совершенно
+          не впитывает влагу и не конденсирует испарения. <br />
+          <br /> Натяжной потолок практически не требует ухода. Если вдруг появились загрязнения, то
+          их можно смыть мягкой тканью, смоченной в теплом мыльном растворе. В свою очередь, для
+          восстановления блеска глянцевого натяжного покрытия чаще всего достаточно просто протереть
+          его сухой салфеткой.{' '}
+        </Typography>
+      ) : (
+        <Typography variant="h6" sx={{ fontSize: '16px', pb: 5 }}>
+          Stiepti griesti ir panelis, kas tiek izstiepts uz speciāli izstrādāts profils - bagete zem
+          galvenajiem griestiem. Kvalitātes izmantošana elastīgs audums ļauj noslēpt visus defektus
+          un izveidot perfekti plakanus griestus virsma, kas nepieciešama, lai radītu maksimālu
+          komfortu jebkurā telpā. <br /> <br /> Atbilstoši uzstādīšanas tehnoloģijai un stiepto
+          griestu tipam, samazinot griestu līmeni būs 3-5 cm, un, ja izmantojat spīdīgus audeklus,
+          tad vizuāli jūsu griesti kļūs vienmērīgi augstāks. Ir vērts atzīmēt, ka vienas vidējas
+          sarežģītības griestu uzstādīšanas laiks ir tikai vairākas stundas, kamēr uzstādīšanas
+          process neatstāj netīrumus un gružus. <br /> Stiepto griestu uzstādīšanai ne izkārtojums,
+          ne platība nav būtiska aprīkotas telpas. Stiepjamie griesti, izgatavoti pēc pasūtījuma,
+          iederas absolūti jebkura telpa, kas ļauj realizēt visdrosmīgākās dizaina idejas. Turklāt
+          spriegotāja darbībai nav nepieciešami īpaši nosacījumi. griesti. Elastīgam audumam
+          optimālā gaisa temperatūra ir no + 0ºС līdz + 60ºС, un šis diapazons ir pietiekams pat
+          ekstrēmākajās situācijās ar laikapstākļiem un apkuri dzīvojamās telpas. Nav ierobežojumu
+          stieptajiem griestiem un mitruma līmenim telpā, jo materiāls, no kura sastāv audekls,
+          vispār neuzsūc mitrumu un neuzsūc kondensē tvaikus. <br />
+          <br /> Stiepjamie griesti praktiski neprasa apkopi. Ja pēkšņi parādās piesārņojums, tad
+          tos var nomazgāt ar mīkstu drāniņu, kas samitrināta siltā ziepjūdenī. Savukārt par
+          glancēta elastīga pārklājuma spīduma atjaunošana bieži vien pietiek tikai ar noslaucīšanu
+          ar savu sauso drānu.
+        </Typography>
+      )}
     </Box>
   );
 };

@@ -6,7 +6,7 @@ import RadioGroup, { useRadioGroup } from '@mui/material/RadioGroup';
 import { styled } from '@mui/material/styles';
 import FormGroup from '@mui/material/FormGroup';
 
-const griestiArr = [
+const griestiArrRus = [
   'ПВХ',
   'Глянцевые',
   'Сатиновые',
@@ -15,29 +15,78 @@ const griestiArr = [
   'Лакированные',
   'Двухуровневые',
 ];
-const griestiOptions = [
+const griestiArrLat = [
+  'PVC',
+  'Glancēts',
+  'Satīns',
+  'Matēts',
+  'Fotogrāfiju drukāšana',
+  'Lakots',
+  'Divpakāpju',
+];
+
+const griestiOptionsRus = [
   {
+    id: 1,
     name: 'Кол-во люстр',
     price: 15,
   },
   {
+    id: 2,
     name: 'Точечные светильники',
     price: 7,
   },
   {
+    id: 3,
     name: 'Led повсветка (за метр)',
     price: 5,
   },
   {
+    id: 4,
     name: 'Кол-во углов',
     price: 5,
   },
   {
+    id: 5,
     name: 'Кол-во труб',
     price: 5,
   },
   {
+    id: 6,
     name: 'Световые линии (за метр)',
+    price: 12,
+  },
+];
+
+const griestiOptionsLat = [
+  {
+    id: 1,
+    name: 'Lustru skaits',
+    price: 15,
+  },
+  {
+    id: 2,
+    name: 'Prožektori',
+    price: 7,
+  },
+  {
+    id: 3,
+    name: 'LED apgaismojums (uz metru)',
+    price: 5,
+  },
+  {
+    id: 4,
+    name: 'Stūru skaits',
+    price: 5,
+  },
+  {
+    id: 5,
+    name: 'Cauruļu skaits',
+    price: 5,
+  },
+  {
+    id: 6,
+    name: 'Gaismas līnijas (uz metru)',
     price: 12,
   },
 ];
@@ -50,9 +99,7 @@ const StyledFormControlLabel = styled((props) => <FormControlLabel {...props} />
   }),
 );
 
-const Calculator = () => {
-  const [news, setNews] = useState('');
-
+const Calculator = ({ language }) => {
   const isNonSmallScreens = useMediaQuery('(min-width: 600px)');
   const isNonMedium2Screens = useMediaQuery('(min-width: 900px)');
 
@@ -88,17 +135,17 @@ const Calculator = () => {
   };
 
   const optionValue = (value, priceSum) => {
-    if (value.name === 'Кол-во люстр') {
+    if (value === 1) {
       setFirstValue(priceSum);
-    } else if (value.name === 'Точечные светильники') {
+    } else if (value === 2) {
       setSecondValue(priceSum);
-    } else if (value.name === 'Led повсветка') {
+    } else if (value === 3) {
       setThirdValue(priceSum);
-    } else if (value.name === 'Кол-во углов') {
+    } else if (value === 4) {
       setFourthValue(priceSum);
-    } else if (value.name === 'Кол-во труб') {
+    } else if (value === 5) {
       setFifthValue(priceSum);
-    } else if (value.name === 'Световые линии Flexy') {
+    } else if (value === 6) {
       setSixthtValue(priceSum);
     }
   };
@@ -124,16 +171,19 @@ const Calculator = () => {
         pb: 5,
       }}>
       <Typography variant="h3" sx={{ fontWeight: 'bold', mb: 1 }}>
-        Калькулятор
+        {language ? 'КАЛЬКУЛЯТОР' : 'KALKULATORS'}
       </Typography>
       <Box
         sx={{
+          fontFamily: 'Raleway',
           fontSize: isNonSmallScreens ? '20px' : '12px',
           display: 'flex',
           alignItems: 'center',
           fontWeight: 'bold',
+          fontSize: '16px',
+          mb: 1,
         }}>
-        Приблизительная стоимость от:{' '}
+        {language ? 'Приблизительная стоимость от:' : 'Aptuvenās izmaksas no:'}
         <Typography
           variant="h3"
           sx={{
@@ -174,7 +224,7 @@ const Calculator = () => {
                 fontWeight: 'bold',
                 pb: '6px',
               }}>
-              ФАКТУРА:
+              {language ? 'ФАКТУРА:' : 'TEKSTŪRA:'}
             </Typography>
             <Stack
               component="form"
@@ -183,7 +233,7 @@ const Calculator = () => {
               autoComplete="off"
               sx={{ pl: 0.5, flexGrow: isNonMedium2Screens ? 0 : 1 }}>
               <RadioGroup sx={{ flexDirection: 'row' }} name="use-radio-group" defaultValue="">
-                {griestiArr.map((item, i) => (
+                {(language ? griestiArrRus : griestiArrLat).map((item, i) => (
                   <MyFormControlLabel
                     key={item}
                     onChange={() => ckecboxValue(i)}
@@ -196,7 +246,7 @@ const Calculator = () => {
             </Stack>
             <Typography
               sx={{ pt: isNonSmallScreens ? 2 : 1, fontSize: '20px', fontWeight: 'bold' }}>
-              Площадь вашего потолка:{' '}
+              {language ? 'Площадь вашего потолка:' : 'Jūsu griestu platība:'}
             </Typography>
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <Slider
@@ -214,8 +264,9 @@ const Calculator = () => {
               </Typography>
             </Box>
             <Typography>
-              Цена включает в себя: одну люстру, обход одной трубы, монтаж профилей, и
-              установку(цена не включает потолка
+              {language
+                ? 'Цена включает в себя: одну люстру, обход одной трубы, монтаж профилей, и установку потолка.'
+                : 'Cenā ietilpst: viena lustra, viena cauruļu apvedceļš, profilu montāža, uzstādīšana griesti.'}
             </Typography>
           </Box>
         </Box>
@@ -235,15 +286,15 @@ const Calculator = () => {
               fontWeight: 'bold',
               pb: '6px',
             }}>
-            ДОПОЛНИТЕЛЬНО:
+            {language ? 'ДОПОЛНИТЕЛЬНО:' : 'PAPILDUS:'}
           </Typography>
           <FormGroup
             aria-label="position"
             sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
-            {griestiOptions.map((item, i) => (
+            {(language ? griestiOptionsRus : griestiOptionsLat).map((item) => (
               <OutlinedInput
-                onChange={(e) => optionValue(item, item.price * e.target.value)}
-                key={i}
+                onChange={(e) => optionValue(item.id, item.price * e.target.value)}
+                key={item.id}
                 type="number"
                 placeholder={item.name}
                 sx={{

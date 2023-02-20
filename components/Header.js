@@ -1,10 +1,8 @@
-import { useState } from 'react';
 import { AppBar, Box, Typography, useMediaQuery, Link, Divider, Button } from '@mui/material';
 import CheckCircleOutlineTwoToneIcon from '@mui/icons-material/CheckCircleOutlineTwoTone';
 import SmartphoneIcon from '@mui/icons-material/Smartphone';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import CalculateIcon from '@mui/icons-material/Calculate';
-import Image from 'next/image';
 
 import logo from '../public/logo.jpeg';
 
@@ -27,10 +25,6 @@ const listLat = [
 const NavBar = ({ language, setLanguage }) => {
   const isNonSmallScreens = useMediaQuery('(min-width: 600px)');
   const isNonMediumScreens = useMediaQuery('(min-width: 900px)');
-
-  const toggle = () => {
-    setLanguage(!language);
-  };
 
   return (
     <AppBar
@@ -97,7 +91,7 @@ const NavBar = ({ language, setLanguage }) => {
           +371 29926325
         </Link>
         <Button
-          onClick={toggle}
+          onClick={() => setLanguage(!language)}
           sx={{
             position: 'absolute',
             color: '#fff',

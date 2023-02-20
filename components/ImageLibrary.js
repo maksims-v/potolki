@@ -64,6 +64,7 @@ import divas7 from '../src/image/divas/7.jpg';
 import divas8 from '../src/image/divas/8.jpg';
 import divas9 from '../src/image/divas/9.jpg';
 import divas10 from '../src/image/divas/10.jpg';
+import { useEffect } from 'react';
 
 const matovie = [
   matovie1,
@@ -110,7 +111,7 @@ const fotopechat = [
   fotopechat10,
 ];
 
-const textArr = [
+const textArrRus = [
   {
     id: 0,
     name: 'Пвх',
@@ -136,12 +137,39 @@ const textArr = [
     name: 'Двухуровневые',
   },
 ];
+const textArrLat = [
+  {
+    id: 0,
+    name: 'PVC',
+  },
+  {
+    id: 1,
+    name: 'Glancēts',
+  },
+  {
+    id: 2,
+    name: 'Satīns',
+  },
+  {
+    id: 3,
+    name: 'Matēts',
+  },
+  {
+    id: 4,
+    name: 'Fotogrāfiju drukāšana',
+  },
+  {
+    id: 5,
+    name: 'Divpakāpju',
+  },
+];
 
-const ImageLibrary = () => {
+const ImageLibrary = ({ language }) => {
   const isNonMediumScreens = useMediaQuery('(min-width: 900px)');
 
-  console.log();
-
+  const [currentImage, setCurrentImage] = useState(0);
+  const [viewerIsOpen, setViewerIsOpen] = useState(false);
+  const [text, setText] = useState('Фотопечать');
   const [photos, setPhotos] = useState([
     {
       src: fotopechat1.src,
@@ -205,49 +233,50 @@ const ImageLibrary = () => {
     },
   ]);
 
-  const [currentImage, setCurrentImage] = useState(0);
-  const [viewerIsOpen, setViewerIsOpen] = useState(false);
-  const [text, setText] = useState('Фотопечать');
-  const [render, setRender] = useState('');
+  useEffect(() => {
+    setText(language ? 'Фотопечать' : 'Fotogrāfiju drukāšana');
+  }, [language]);
 
-  const toggleChips = (e) => {
-    setText(e.target.innerText);
-    if (e.target.innerText === 'Матовые') {
+  const toggleChips = (item) => {
+    const value = item.id;
+
+    setText(item.name);
+    if (value === 3) {
       setPhotos(
         photos.map((item, i) => ({
           ...item,
           src: matovie[i].src,
         })),
       );
-    } else if (e.target.innerText === 'Пвх') {
+    } else if (value === 0) {
       setPhotos(
         photos.map((item, i) => ({
           ...item,
           src: pvh[i].src,
         })),
       );
-    } else if (e.target.innerText === 'Сатиновые') {
+    } else if (value === 2) {
       setPhotos(
         photos.map((item, i) => ({
           ...item,
           src: satin[i].src,
         })),
       );
-    } else if (e.target.innerText === 'Глянцевые') {
+    } else if (value === 1) {
       setPhotos(
         photos.map((item, i) => ({
           ...item,
           src: gljanec[i].src,
         })),
       );
-    } else if (e.target.innerText === 'Фотопечать') {
+    } else if (value === 4) {
       setPhotos(
         photos.map((item, i) => ({
           ...item,
           src: fotopechat[i].src,
         })),
       );
-    } else if (e.target.innerText === 'Двухуровневые') {
+    } else if (value === 5) {
       setPhotos(
         photos.map((item, i) => ({
           ...item,
@@ -275,9 +304,8 @@ const ImageLibrary = () => {
         pt: 2,
       }}>
       <Typography variant="h3" sx={{ mb: 2, fontWeight: 'bold' }}>
-        Галерея
+        {language ? 'Галерея' : 'Galerija'}
       </Typography>
-      <Image src={fotopechat1} alt="Picture of the author" placeholder="blur" />
       <Box>
         <Stack
           direction="row"
@@ -289,19 +317,19 @@ const ImageLibrary = () => {
             textAlign: 'center',
             width: '100%',
           }}>
-          {textArr.map((item) => (
+          {(language ? textArrRus : textArrLat).map((item) => (
             <Chip
               key={item.id}
               sx={{ width: isNonMediumScreens ? '15%' : '40%' }}
               label={item.name}
               color="info"
               variant="outlined"
-              onClick={toggleChips}
+              onClick={() => toggleChips(item)}
             />
           ))}
         </Stack>
         <Typography
-          variant="h4"
+          variant="h3"
           sx={{
             textAlign: 'left',
             mb: 1,
