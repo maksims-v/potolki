@@ -107,9 +107,9 @@ const NavBar = ({ language, setLanguage }) => {
 
       <Typography
         variant="h1"
-        fontSize={isNonSmallScreens ? undefined : '25px'}
+        fontSize={isNonSmallScreens ? undefined : '20px'}
         sx={{ zIndex: '2', pt: isNonMediumScreens ? 10 : 10, pb: isNonMediumScreens ? 7 : 10 }}>
-        {language ? 'НАТЯЖНЫЕ ПОТОЛКИ' : 'IESTIEPTIE GRIESTI'}
+        {language ? 'НАТЯЖНЫЕ ПОТОЛКИ ПО ЛАТВИИИ' : 'IESTIEPTIE GRIESTI LATVIJĀ'}
       </Typography>
 
       <Box sx={{ zIndex: '2', flexGrow: '1' }}>

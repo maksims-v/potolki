@@ -20,6 +20,7 @@ const Home = () => {
         <title>IESTIEPTIE GRIESTI</title>
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="canonical" href="https://potolki-8z93-6u3uc0rmk-maksims-v.vercel.app/" />
         <meta
           name="description"
           content="Piekaramie Griesti | Iestieptie, nostiepjamie griesti Rīgā un Latvijā"
@@ -35,7 +36,6 @@ const Home = () => {
           <Calculator language={language} />
           <About language={language} />
         </Container>
-
         <Footer />
       </ThemeProvider>
     </main>

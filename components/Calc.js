@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Box, Typography, useMediaQuery, Slider, Stack, Radio, OutlinedInput } from '@mui/material';
-
 import FormControlLabel from '@mui/material/FormControlLabel';
 import RadioGroup, { useRadioGroup } from '@mui/material/RadioGroup';
 import { styled } from '@mui/material/styles';

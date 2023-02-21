@@ -86,7 +86,7 @@ const About = ({ language }) => {
           : 'Vispārīga informācija par stieptajiem griestiem'}
       </Typography>
       {language ? (
-        <Typography variant="h6" sx={{ fontSize: '16px', pb: 5 }}>
+        <Typography variant="h4" sx={{ fontSize: '16px', pb: 5 }}>
           Натяжной потолок представляет собой полотнище, которое натягивается на специально
           сконструированный профиль – багет под основным потолком. Использование качественного
           натяжного полотна позволяет скрыть любые дефекты и сформировать идеально ровную потолочную
@@ -110,7 +110,7 @@ const About = ({ language }) => {
           его сухой салфеткой.{' '}
         </Typography>
       ) : (
-        <Typography variant="h6" sx={{ fontSize: '16px', pb: 5 }}>
+        <Typography variant="h4" sx={{ fontSize: '16px', pb: 5 }}>
           Stiepti griesti ir panelis, kas tiek izstiepts uz speciāli izstrādāts profils - bagete zem
           galvenajiem griestiem. Kvalitātes izmantošana elastīgs audums ļauj noslēpt visus defektus
           un izveidot perfekti plakanus griestus virsma, kas nepieciešama, lai radītu maksimālu
